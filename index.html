@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FESPACO 2025 - Festival Panafricain du Cinéma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crimson: '#990302',
+                        blush: '#ebe2e0',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        .carousel-item {
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .carousel-item:not(.active) {
+            opacity: 0;
+            display: none;
+        }
+        
+        .trophy-icon {
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+        }
+        
+        .film-strip {
+            background: repeating-linear-gradient(
+                to bottom,
+                #000,
+                #000 10px,
+                #333 10px,
+                #333 20px
+            );
+        }
+    </style>
+</head>
+<body class="bg-blush font-sans text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-crimson text-white py-4 px-6 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold font-serif">FESPACO 2025</div>
+            <button class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="hover:text-blush transition">À propos</a>
+                <a href="#program" class="hover:text-blush transition">Programme</a>
+                <a href="#awards" class="hover:text-blush transition">Prix</a>
+                <a href="#gallery" class="hover:text-blush transition">Galerie</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Carousel -->
+    <header class="relative overflow-hidden">
+        <div class="carousel-container h-96 md:h-screen relative">
+            <!-- Carousel Items -->
+            <div class="carousel-item active absolute inset-0 w-full h-full">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                        <div class="text-center px-4">
+                            <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mb-4">FESPACO 2025</h1>
+                            <p class="text-xl md:text-2xl text-blush mb-6">Ouagadougou, Burkina Faso</p>
+                            <a href="#about" class="bg-crimson hover:bg-red-800 text-white px-6 py-3 rounded-full font-semibold transition">Découvrir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-item absolute inset-0 w-full h-full">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                        <div class="text-center px-4">
+                            <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">29ème Édition</h2>
+                            <p class="text-xl text-blush mb-6">Souveraineté culturelle des pays du Sahel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-item absolute inset-0 w-full h-full">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80');">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                        <div class="text-center px-4">
+                            <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">Hommage à Souleymane Cissé</h2>
+                            <p class="text-xl text-blush">Célébration du cinéaste malien</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carousel Controls -->
+            <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10" onclick="prevSlide()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10" onclick="nextSlide()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- Carousel Indicators -->
+            <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition" onclick="goToSlide(0)"></button>
+                <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition" onclick="goToSlide(1)"></button>
+                <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition" onclick="goToSlide(2)"></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-6 bg-white">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-crimson mb-8 text-center">Le Festival Panafricain du Cinéma et de la Télévision de Ouagadougou</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <p class="mb-4">La 29e édition du FESPACO a mis l'accent sur la souveraineté culturelle des pays du Sahel. Cette édition a rendu hommage au cinéaste malien Souleymane Cissé, décédé en février 2025.</p>
+                    <p class="mb-4">Une Semaine de la critique a été organisée en partenariat avec l'Association des critiques de cinéma du Burkina Faso (ASCRIC-B), offrant projections et tables rondes sur l'esthétique cinématographique.</p>
+                </div>
+                <div class="relative">
+                    <div class="bg-crimson h-64 w-full rounded-lg shadow-xl"><img src="https://s.rfi.fr/media/display/33b37be0-3328-11ec-893b-005056bf30b7/w:1024/p:16x9/Si%C3%A8ge%20du%20fespaco-1.jpeg" alt=""></div>
+                    <div class="absolute -bottom-4 -right-4 bg-blush p-4 rounded-lg shadow-lg border-2 border-crimson w-3/4">
+                        <h3 class="font-bold text-crimson mb-2">Semaine de la Critique</h3>
+                        <p class="text-sm">23-28 février 2025</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-blush p-6 rounded-lg border-l-4 border-crimson">
+                <h3 class="text-xl font-serif font-bold text-crimson mb-4">Innovation majeure</h3>
+                <p>L'introduction de la Semaine de la critique, organisée par l'Association des critiques de cinéma du Burkina (ASCRIC-B). Tenue du 23 au 28 février, cette initiative visait à renforcer la visibilité de la critique cinématographique africaine.</p>
+                <p class="mt-3">Au programme figuraient la projection de dix films (cinq fictions et cinq documentaires), des panels, des débats et la remise du Prix Clément Tapsoba, en hommage à l'un des membres fondateurs de l'ASCRIC-B.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="py-16 px-6 bg-crimson text-white">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-12 text-center">Distinctions et prix spéciaux</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Award Item -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-crimson text-white p-3 rounded-full mr-4 trophy-icon">
+                            <i class="fas fa-trophy text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Prix spécial de l'UEMOA</h3>
+                            <p class="text-sm text-crimson">Katanga, la danse des scorpions</p>
+                            <p class="text-sm">de Dani Kouyaté</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Award Item -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-crimson text-white p-3 rounded-full mr-4 trophy-icon">
+                            <i class="fas fa-trophy text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Prix spécial HCR</h3>
+                            <p class="text-sm text-crimson">Waongo</p>
+                            <p class="text-sm">d'Augusta Palenfo</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Award Item -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-crimson text-white p-3 rounded-full mr-4 trophy-icon">
+                            <i class="fas fa-trophy text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Prix de l'excellence en sécurité alimentaire du PAM</h3>
+                            <p class="text-sm text-crimson">L'homme qui plante les baobabs</p>
+                            <p class="text-sm">de Michel Zongo</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Award Item -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-crimson text-white p-3 rounded-full mr-4 trophy-icon">
+                            <i class="fas fa-trophy text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Prix spécial UNFPA</h3>
+                            <p class="text-sm text-crimson">La mariée</p>
+                            <p class="text-sm">de Myriam Birara</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Award Item -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-crimson text-white p-3 rounded-full mr-4 trophy-icon">
+                            <i class="fas fa-trophy text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Prix spécial PNUD pour la cohésion sociale</h3>
+                            <p class="text-sm text-crimson">Bienvenue à Kikideni</p>
+                            <p class="text-sm">d'Aminata Diallo Glez</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Award Item -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-crimson text-white p-3 rounded-full mr-4 trophy-icon">
+                            <i class="fas fa-trophy text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Prix spécial "Souveraineté"</h3>
+                            <p class="text-sm text-crimson">Kapital</p>
+                            <p class="text-sm">de Simplice Herman Ganou</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 px-6 bg-white">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-crimson mb-12 text-center">Galerie</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="aspect-square bg-cover bg-center rounded-lg shadow-md" style="background-image: url('https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                <div class="aspect-square bg-cover bg-center rounded-lg shadow-md" style="background-image: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                <div class="aspect-square bg-cover bg-center rounded-lg shadow-md" style="background-image: url('https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80');"></div>
+                <div class="aspect-square bg-cover bg-center rounded-lg shadow-md" style="background-image: url('https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');"></div>
+                <div class="aspect-square bg-cover bg-center rounded-lg shadow-md" style="background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                <div class="aspect-square bg-cover bg-center rounded-lg shadow-md" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80');"></div>
+                <div class="aspect-square bg-cover bg-center rounded-lg shadow-md" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1459&q=80');"></div>
+                <div class="aspect-square bg-cover bg-center rounded-lg shadow-md" style="background-image: url('https://images.unsplash.com/photo-1543536448-d209d2d13a1c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Film Strip Effect -->
+    <div class="film-strip h-16 md:h-24 relative overflow-hidden">
+        <div class="absolute inset-0 flex items-center animate-marquee whitespace-nowrap">
+            <span class="text-white text-xl md:text-3xl font-bold mx-8">FESPACO 2025 • FESPACO 2025 • FESPACO 2025 • FESPACO 2025 • FESPACO 2025 • FESPACO 2025 • FESPACO 2025 •</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <div>
+                    <h3 class="text-xl font-serif font-bold text-crimson mb-4">FESPACO 2025</h3>
+                    <p>Festival Panafricain du Cinéma et de la Télévision de Ouagadougou</p>
+                    <p class="mt-2">Ouagadougou, Burkina Faso</p>
+                </div>
+                
+                <div class="text-center">
+                    <p class="text-blush text-opacity-70">Made by NGO NGIMBUS Israela Victoria</p>
+                </div>
+                
+                <div class="text-right">
+                    <h4 class="font-bold mb-4">Suivez-nous</h4>
+                    <div class="flex justify-end space-x-4">
+                        <a href="#" class="text-blush hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-blush hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-blush hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-blush hover:text-white text-xl"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-blush border-opacity-20 mt-8 pt-8 text-center text-blush text-opacity-70">
+                <p>&copy; 2025 FESPACO. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+        
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+        }
+        
+        // Auto-advance carousel
+        setInterval(nextSlide, 5000);
+        
+        // Mobile menu toggle (would need additional HTML)
+        document.querySelector('nav button').addEventListener('click', function() {
+            const menu = document.querySelector('nav .hidden');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
